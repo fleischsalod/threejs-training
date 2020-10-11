@@ -1,0 +1,11 @@
+{
+  "name": "threejs-tutorial",
+  "version": "1.0.0",
+  "description": "Personal Training-Project for threejs",
+  "main": "index.html",
+  "scripts": {
+    "test": "http-server . -p 8000"
+  },
+  "author": "Luis Graml",
+  "license": "ISC"
+}
