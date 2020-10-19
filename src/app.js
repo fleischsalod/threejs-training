@@ -15,8 +15,8 @@ var cubeGeometry = new THREE.BoxGeometry();
 var cubeMaterial = new THREE.MeshBasicMaterial({vertexColors: THREE.FaceColors});
 cubeGeometry.faces[0].color.setHex(0x00ff00);
 cubeGeometry.faces[1].color.setHex(0x00ff00);
-cubeGeometry.faces[2].color.setHex(0x0000ff);
-cubeGeometry.faces[3].color.setHex(0x0000ff);
+cubeGeometry.faces[2].color.setHex(0x00ffff);
+cubeGeometry.faces[3].color.setHex(0x00ffff);
 cubeGeometry.faces[4].color.setHex(0xff0000);
 cubeGeometry.faces[5].color.setHex(0xff0000);
 cubeGeometry.faces[6].color.setHex(0xffa500);
@@ -41,13 +41,22 @@ for (let z = -1.1; z <= 1.1; z+=1.1) {
     }
 }
 
+var sphereGeometry = new THREE.SphereGeometry(20, 64, 64);
+var texture = new THREE.TextureLoader().load('images/earthmap.jpg');
+var sphereMaterial = new THREE.MeshBasicMaterial( {map: texture} );
+var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+
+sphere.position.x = 50;
+scene.add( sphere );
+
 camera.position.set( 0, 0, 5 );
-camera.lookAt( 0, 0, 0 );
+camera.lookAt( 50, 0, 0 );
 
 var animate = function () {
     requestAnimationFrame( animate );
     pivot.rotation.x += 0.01;
     pivot.rotation.y += 0.01;
+    sphere.rotation.y += 0.005;
 
     renderer.render( scene, camera );
 };
